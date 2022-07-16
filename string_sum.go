@@ -18,6 +18,8 @@ var (
 func StringSum(input string) (output string, err error) {
 	var sum int = 0
 	var count int = 0
+	var err2 error
+	var a int
 	if input == "" {
 		err := fmt.Errorf("%w", errorEmptyInput)
 		fmt.Println(err.Error())
@@ -25,14 +27,13 @@ func StringSum(input string) (output string, err error) {
 	}
 	input1 := strings.Split(strings.TrimSpace(strings.Replace(input, "-", "+-", -1)), "+")
 	for _, i := range input1 {
-		a, e := strconv.Atoi(i)
+		a, err2 = strconv.Atoi(i)
 		sum += a
 		count++
-		err := fmt.Errorf("%w", e)
-		if err != nil {
-			fmt.Println(err.Error())
-			return "", err
-		}
+	}
+	if err := fmt.Errorf("%w", err2); err != nil {
+		fmt.Println(err.Error())
+		return "", err
 	}
 	if count != 2 {
 		err := fmt.Errorf("%w", errorNotTwoOperands)
