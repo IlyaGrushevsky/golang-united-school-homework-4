@@ -18,8 +18,8 @@ var (
 func StringSum(input string) (output string, err error) {
 	var sum int = 0
 	var count int = 0
-	if _, e := strconv.ParseInt(input, 10, 64); e != nil {
-		err := fmt.Errorf("Пустой ввод %w", errorEmptyInput)
+	if input == "" {
+		err := fmt.Errorf("%w", errorEmptyInput)
 		fmt.Println(err.Error())
 		return "", err
 	}
@@ -28,14 +28,14 @@ func StringSum(input string) (output string, err error) {
 		a, e := strconv.Atoi(i)
 		sum += a
 		count++
-		err := fmt.Errorf("Некорректный ввод %w", e)
+		err := fmt.Errorf("%w", e)
 		if err != nil {
 			fmt.Println(err.Error())
 			return "", err
 		}
 	}
 	if count != 2 {
-		err := fmt.Errorf("Пустой ввод %w", errorNotTwoOperands)
+		err := fmt.Errorf("%w", errorNotTwoOperands)
 		fmt.Println(err.Error())
 		return "", err
 	}
