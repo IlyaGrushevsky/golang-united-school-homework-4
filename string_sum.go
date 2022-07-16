@@ -31,6 +31,8 @@ func StringSum(input string) (output string, err error) {
 		sum += a
 		count++
 	}
+	return output, nil
+
 	if err := fmt.Errorf("%w", err2); err != nil {
 		fmt.Println(err.Error())
 		return "", err
@@ -42,5 +44,4 @@ func StringSum(input string) (output string, err error) {
 	}
 	output = strconv.Itoa(sum)
 
-	return output, nil
 }
