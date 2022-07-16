@@ -31,17 +31,17 @@ func StringSum(input string) (output string, err error) {
 		sum += a
 		count++
 	}
-	return output, nil
+	output = strconv.Itoa(sum)
 
 	if err := fmt.Errorf("%w", err2); err != nil {
 		fmt.Println(err.Error())
-		return "", err
+		return output, nil
 	}
 	if count != 2 {
 		err := fmt.Errorf("%w", errorNotTwoOperands)
 		fmt.Println(err.Error())
-		return "", err
+		return output, nil
 	}
-	output = strconv.Itoa(sum)
 
+	return output, nil
 }
